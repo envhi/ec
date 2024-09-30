@@ -9,7 +9,6 @@ class UserRepository {
 
         return data
     }
-
 }
 
 module.exports = new UserRepository();
