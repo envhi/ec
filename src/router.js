@@ -1,8 +1,12 @@
 const express = require('express')
+const { findAllOrders } = require('./repositories/orderRepository')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
-    res.json('ok')
+    
+    const data = await findAllOrders()
+    
+    res.json(data)
 })
 
 module.exports = router

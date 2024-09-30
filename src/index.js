@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 require('express-async-errors'); // precisei dessa lib pq o middleware de erro não funciona com funções async;
 const router = require('./router')
@@ -12,6 +13,6 @@ app.use(router)
 
 app.use(errorMiddleware)
 
-app.listen(3000, () => {
-    console.log('server running on port 3000')
+app.listen(process.env.SERVER_PORT, () => {
+    console.log(`server running on port ${process.env.SERVER_PORT}`)
 })
