@@ -1,12 +1,10 @@
 const express = require('express')
-const pool = require('./db/db')
+const { findAllUsers } = require('./repositories/userRepository')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
 
-    const result = await pool.query('SELECT * FROM usuarios')
-
-    const data = result.rows
+    const data = await findAllUsers()
 
     res.json(data)
 
