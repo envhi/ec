@@ -1,6 +1,7 @@
 const express = require('express')
 const { findAllOrders } = require('./repositories/orderRepository')
 const userController = require('./controllers/userController')
+const productController = require('./controllers/productController')
 const router = express.Router()
 
 router.get('/', async (req, res) => {
@@ -11,5 +12,6 @@ router.get('/', async (req, res) => {
 })
 
 router.get('/users', userController.findAllUsers)
+router.get('/products', productController.findAllProducts)
 
 module.exports = router
