@@ -1,3 +1,4 @@
+const { BadRequestError } = require("../helpers/ApiError")
 const userRepository = require("../repositories/userRepository")
 
 class UserService {
@@ -6,7 +7,7 @@ class UserService {
         try {
             return await userRepository.findAllUsers()
         } catch (error) {
-            throw new Error('test user service find all users')
+            throw new BadRequestError('test user service find all users')
         }
     }
 }
