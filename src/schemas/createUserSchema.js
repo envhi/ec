@@ -14,5 +14,5 @@ let newUserSchema = yup.object({
 });
 
 
-module.exports = { newUserSchema, validateBody };
+module.exports = { newUserSchema };
 
