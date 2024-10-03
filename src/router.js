@@ -21,6 +21,6 @@ router.get('/orders', orderController.findAllOrders)
 
 // test validation route
 router.post('/users', createUserValidation, async (req, res) => {
-    res.json('ok')
+    res.json(req.body)
 })
 module.exports = router
