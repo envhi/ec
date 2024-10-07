@@ -20,7 +20,7 @@ router.get('/products', productController.findAllProducts)
 router.get('/orders', orderController.findAllOrders)
 
 // test validation route
-router.post('/users', createUserValidation, async (req, res) => {
-    res.json(req.body)
-})
+router.post('/users', createUserValidation, userController.createUser)
+
+
 module.exports = router

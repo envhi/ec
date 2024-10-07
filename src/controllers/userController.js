@@ -8,6 +8,13 @@ class UserController {
         return res.json(data)
     }
 
+    async createUser(req, res) {
+        const newUser = await userService.createUser(req.body)
+
+        res.status(201).json('Usuário cadastrado com sucesso')
+
+    }
+
 }
 
 module.exports = new UserController();
