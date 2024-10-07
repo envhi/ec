@@ -1,8 +1,8 @@
+const { hash } = require("bcrypt")
 const { BadRequestError } = require("../helpers/ApiError")
 const userRepository = require("../repositories/userRepository")
 
 class UserService {
-
     async findAllUsers() {
         try {
             return await userRepository.findAllUsers()
@@ -18,6 +18,7 @@ class UserService {
             throw new BadRequestError('E-mail já cadastrado')
         }
 
+        const passwordHash = await hash(newUserData.password, 9)
         // ordem dos valores que dao match no placeholder 
         const values = [
             newUserData.nome,
@@ -25,7 +26,7 @@ class UserService {
             newUserData.email,
             newUserData.dataNascimento,
             newUserData.telefone,
-            newUserData.password,
+            passwordHash
         ]
 
         return await userRepository.createUser(values)

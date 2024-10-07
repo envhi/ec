@@ -1,13 +1,12 @@
 const createUserSchema = require('../schemas/createUserSchema');
 const { BadRequestError } = require('../helpers/ApiError');
-const hash = require('../helpers/hash');
 
 const createUserValidation = async (req, res, next) => {
 
     try {
         await createUserSchema.validate(req.body, { abortEarly: false })
     } catch (error) {
-        throw new BadRequestError(error.errors[0])
+        throw new BadRequestError(error.errors[0])        
     }
 
     next()
