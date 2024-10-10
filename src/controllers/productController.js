@@ -7,7 +7,10 @@ class ProductController {
 
         return res.json(data)
     }
+
+    async createProduct(req, res) {
+        res.json({msg: 'ok', body: req.body})
+    }
 }
 
 module.exports = new ProductController();
-
