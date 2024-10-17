@@ -7,7 +7,7 @@ let createProductSchema = yup.object({
         , 'Tipos de produtos válidos: hardware, periferico, computador, games, celular, telefone, tv, audio, escritorio, tablets, cameras, outro')
     .required(),
     descricao: yup.string().min(10).max(1000),
-    qtdEstoque: yup.number().required(),             // pode ser 0, depois permitir alterar no update
+    qtdEstoque: yup.number().required(),            //  pode ser 0, depois permitir alterar no update
     // codigoBarra //// vai ser gerado no service
     urlFoto: yup.string(),
     peso: yup.number().required(),
