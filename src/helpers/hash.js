@@ -5,4 +5,5 @@ const hashPassword = async (plainText) => {
     return await bcrypt.hash(plainText, saltRounds);
 }
 
+
 module.exports = hashPassword

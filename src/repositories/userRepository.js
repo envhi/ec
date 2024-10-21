@@ -22,6 +22,18 @@ class UserRepository {
         return user.rowCount
     }
 
+    async findUserAndPasswordByEmail(email) {
+        const query = `  
+        SELECT id_usuario, email, password_hash
+        FROM usuarios
+        WHERE email = $1
+        `
+
+        const user = await pool.query(query, [email])     // alternativa pra nao precisar instanciar um array no service
+
+        return user.rows[0]
+    }
+
     async createUser(values) {
         const query = `
         INSERT INTO usuarios (nome, sobrenome, email, data_nascimento, telefone, password_hash)

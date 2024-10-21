@@ -4,7 +4,20 @@ const productController = require('./controllers/productController')
 const orderController = require('./controllers/orderController')
 const createUserValidation = require('./middlewares/createUserValidation')
 const createProductValidation = require('./middlewares/createProductValidation')
+const authController = require('./controllers/authController')
 const router = express.Router()
+
+// login tests
+router.post('/auth', authController.login)
+
+
+
+
+
+
+
+
+
 
 // home testing route
 router.get('/', async (req, res) => {
@@ -21,9 +34,6 @@ router.get('/products', productController.findAllProducts)
 
 // order endpoints
 router.get('/orders', orderController.findAllOrders)
-
-
-
 
 
 // products test
