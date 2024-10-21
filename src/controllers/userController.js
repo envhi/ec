@@ -15,6 +15,13 @@ class UserController {
 
     }
 
+    async getUserInfoById(req, res) {
+        const userInfo = await userService.getUserInfoById(4) // test/vai vir do jwt no middleware como req.userId
+
+        res.status(200).json(userInfo)
+    }
+    
+
 }
 
 module.exports = new UserController();

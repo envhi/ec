@@ -32,6 +32,22 @@ class UserRepository {
 
         return newUser.rows[0]
     }
+
+    async getUserInfoById(userId) {
+
+        console.log(userId)
+
+        // return
+        const query = `
+        SELECT nome, sobrenome, email, data_nascimento, telefone
+        FROM usuarios
+        WHERE id_usuario = $1
+        `
+
+        const userInfo = await pool.query(query, userId)
+
+        return userInfo.rows[0]
+    }
 }
 
 module.exports = new UserRepository()

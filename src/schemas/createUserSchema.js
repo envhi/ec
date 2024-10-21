@@ -4,7 +4,7 @@ const yup = require('yup')
 let newUserSchema = yup.object({
     nome: yup.string().min(3, "Nome minimo 3 letras").max(50).required("Nome obrigatório"),            // nome
     sobrenome: yup.string().min(3, "Sobrenome minimo 3 letras").max(50, "Sobrenome maximo 50 letras").required("Sobrenome obrigatório"),  // sobrenome 
-    email: yup.string().email("E-mail inválido").required("E-mail obrigatório"),                // email 
+    email: yup.string().email("E-mail inválido").required("E-mail obrigatório"),        // email 
     password: yup.string().min(8, "Senha mínima 8 caracteres").required("Senha obrigatório"),           // password_hash
     dataNascimento: yup.date()                                                 // data_nascimento
         .required('A data de nascimento é obrigatória')

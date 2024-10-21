@@ -14,6 +14,7 @@ router.get('/', async (req, res) => {
 // user endpoints
 router.get('/users', userController.findAllUsers)
 router.post('/users', createUserValidation, userController.createUser)
+router.get('/users/profile', userController.getUserInfoById) 
 
 // products endpoints
 router.get('/products', productController.findAllProducts)

@@ -1,5 +1,5 @@
 const { hash } = require("bcrypt")
-const { BadRequestError } = require("../helpers/ApiError")
+const { BadRequestError, NotFoundError } = require("../helpers/ApiError")
 const userRepository = require("../repositories/userRepository")
 
 class UserService {
@@ -30,6 +30,19 @@ class UserService {
         ]
 
         return await userRepository.createUser(values)
+    }
+
+    async getUserInfoById(userId) {
+
+        const idArray = [userId]
+
+        const userInfo = await userRepository.getUserInfoById(idArray)
+
+        if(!userInfo) {
+            throw new NotFoundError('Usuário não existe')
+        }
+
+        return userInfo
     }
 }
 
