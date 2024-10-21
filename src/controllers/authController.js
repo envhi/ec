@@ -9,6 +9,10 @@ class AuthController {
         res.status(200).json(token)
     }
 
+    async test(req, res) {
+        res.json('req userId: ' + req.userId)
+    }
+
 }
 
 module.exports = new AuthController();

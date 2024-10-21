@@ -5,14 +5,14 @@ const orderController = require('./controllers/orderController')
 const createUserValidation = require('./middlewares/createUserValidation')
 const createProductValidation = require('./middlewares/createProductValidation')
 const authController = require('./controllers/authController')
+const auth = require('./middlewares/auth')
 const router = express.Router()
 
 // login tests
 router.post('/auth', authController.login)
 
-
-
-
+// test auth midl
+router.get('/auth/test', auth, authController.test )
 
 
 
