@@ -34,9 +34,7 @@ class UserService {
 
     async getUserInfoById(userId) {
 
-        const idArray = [userId]
-
-        const userInfo = await userRepository.getUserInfoById(idArray)
+        const userInfo = await userRepository.getUserInfoById(userId)
 
         if(!userInfo) {
             throw new NotFoundError('Usuário não existe')

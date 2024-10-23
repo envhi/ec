@@ -12,11 +12,10 @@ class UserController {
         const newUser = await userService.createUser(req.body)
 
         res.status(201).json('Usuário cadastrado com sucesso')
-
     }
 
     async getUserInfoById(req, res) {
-        const userInfo = await userService.getUserInfoById(4) // test/vai vir do jwt no middleware como req.userId
+        const userInfo = await userService.getUserInfoById(35) // test/vai vir do jwt no middleware como req.userId
 
         res.status(200).json(userInfo)
     }

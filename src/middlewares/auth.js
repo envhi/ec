@@ -1,5 +1,6 @@
 const { UnauthorizedError } = require("../helpers/ApiError")
 const jwt = require('jsonwebtoken')
+const userExists = require("../helpers/userExists")
 
 const auth = async (req, res, next) => {
 
@@ -15,7 +16,19 @@ const auth = async (req, res, next) => {
 
     try {
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-        console.log(decodedToken)
+        
+        console.log(decodedToken.userId)
+        
+        if(!decodedToken.userId) {
+            return res.status(401).json('Token inválido (!decodedToken.userId)')
+        }
+
+        const user = await userExists(decodedToken.userId)
+
+        if(!user) {
+            return res.status(401).json('Token inválido (!user)')
+        }
+
         req.userId = decodedToken.userId
     } catch (error) {
         console.log(error)
