@@ -27,26 +27,6 @@ class UserController {
         return res.json(update)
 
     }
-
-
-        /*
-            dados que podem ser alterados
-            nome VARCHAR(50) not null,
-            sobrenome VARCHAR(50) not null,
-            data_nascimento DATE,
-            telefone VARCHAR(20) not null,
-        */
-        /*
-         {
-            "nome": "felipe",
-            "sobrenome": "foseca",
-            "email": "felipefonseca@gmail.com",
-            "password": "12345678",
-            "dataNascimento": "1996-11-29",
-            "telefone": "+5515996558555"
-          }
-             */
-          
     
 
 }
