@@ -57,6 +57,31 @@ class UserRepository {
 
         return userInfo.rows[0]
     }
+
+    async updateUserProfile(userId, setClause, values, keys) {
+
+        // console.log(setClause)
+
+        const query = `
+        UPDATE usuarios
+        SET ${setClause.join(', ')}
+        WHERE id_usuario = ${userId}
+        RETURNING ${keys.join(', ')}
+        `
+
+        // console.log(userId)
+        // console.log(setClause)
+        // console.log(values)
+
+        try {
+            const userUpdate = await pool.query(query, values)
+            
+            return userUpdate.rows[0]
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
 }
 
 module.exports = new UserRepository()

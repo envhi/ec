@@ -8,15 +8,16 @@ const authController = require('./controllers/authController')
 const auth = require('./middlewares/auth')
 const router = express.Router()
 
+
+
+// test user update
+router.patch('/users/profile', auth, userController.updateUserProfile)
+
 // login tests
 router.post('/auth', authController.login)
 
 // test auth midl
 router.get('/auth/test', auth, authController.test )
-
-
-
-
 
 
 // home testing route

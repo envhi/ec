@@ -4,8 +4,6 @@ const userExists = require("../helpers/userExists")
 
 const auth = async (req, res, next) => {
 
-    console.log(req.headers.authorization)
-    
     const { authorization } = req.headers
 
     if (!authorization) {
@@ -16,8 +14,6 @@ const auth = async (req, res, next) => {
 
     try {
         const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
-        
-        console.log(decodedToken.userId)
         
         if(!decodedToken.userId) {
             return res.status(401).json('Token inválido (!decodedToken.userId)')

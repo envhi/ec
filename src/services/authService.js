@@ -16,7 +16,7 @@ class AuthService {
             throw new UnauthorizedError('Senha incorreta')
         }
         
-        return jwt.sign({ userId: user.id_usuario }, process.env.JWT_SECRET, { expiresIn: '10m' })
+        return jwt.sign({ userId: user.id_usuario }, process.env.JWT_SECRET, { expiresIn: '60m' })
 
     }
 }
