@@ -21,6 +21,30 @@ class ProductService {
         return produto
 
     }
+
+    async createProduct(productData, userId) {
+        // nome, categoria_produto, descricao, quantidadeEstoque, codigo_barra, foto_url, peso, marca, valor // req body
+        // id => token => req.userId 
+
+        const values = [
+            productData.nome,
+            productData.categoriaProduto,
+            productData.descricao,
+            productData.qtdEstoque,
+            productData.codigoBarra,
+            productData.fotoUrl,
+            productData.peso,
+            productData.marca,
+            productData.valor,
+            userId
+        ]
+
+        // console.log(values)
+        // return
+
+        return await productRepository.createProduct(values)
+
+    }
 }
 
 module.exports = new ProductService()

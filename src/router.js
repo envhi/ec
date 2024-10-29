@@ -38,7 +38,7 @@ router.get('/orders', orderController.findAllOrders)
 
 
 // products test
-router.post('/products', createProductValidation, productController.createProduct)
+router.post('/products', createProductValidation, auth, productController.createProduct)
 router.get('/products/:id', productController.findProductById)
 
 

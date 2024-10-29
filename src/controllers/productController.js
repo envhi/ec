@@ -9,7 +9,11 @@ class ProductController {
     }
 
     async createProduct(req, res) {
-        res.json({msg: 'ok', body: req.body})
+        const newProduct = await productService.createProduct(req.body, req.userId)
+
+        console.log(newProduct)
+
+        res.status(201).json('Produto cadastrado com sucesso')
     }
 
     async findProductById(req, res) {
@@ -17,6 +21,7 @@ class ProductController {
 
         res.json(data)
     }
+    
 }
 
 module.exports = new ProductController();
