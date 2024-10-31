@@ -8,7 +8,8 @@ const authController = require('./controllers/authController')
 const auth = require('./middlewares/auth')
 const router = express.Router()
 
-
+// get products cadastrados pelo usuario[vendedor]
+router.get('/users/products', auth, productController.findUserProducts)
 
 // test user update
 router.patch('/users/profile', auth, userController.updateUserProfile)

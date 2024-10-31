@@ -45,6 +45,16 @@ class ProductService {
         return await productRepository.createProduct(values)
 
     }
+
+    async findUserProducts(userId) {
+        const userProducts = await productRepository.findUserProducts(userId)
+
+        if(userProducts.length === 0) {
+            throw new NotFoundError('Não há produtos cadastrados')
+        }
+
+        return userProducts
+    }
 }
 
 module.exports = new ProductService()

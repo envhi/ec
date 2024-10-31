@@ -22,6 +22,11 @@ class ProductController {
         res.json(data)
     }
     
+    async findUserProducts(req, res) {
+        const userProducts = await productService.findUserProducts(req.userId)
+
+        return res.status(200).json(userProducts)
+    }
 }
 
 module.exports = new ProductController();
