@@ -58,12 +58,13 @@ class UserRepository {
         return userInfo.rows[0]
     }
 
-    async updateUserProfile(userId, setClause, values, keys) {
+    async updateUserProfile(setClause, values, keys) {
 
+        console.log(setClause)
         const query = `
         UPDATE usuarios
         SET ${setClause.join(', ')}
-        WHERE id_usuario = ${userId}
+        WHERE id_usuario = $${setClause.length + 1}
         RETURNING ${keys.join(', ')}
         `
 

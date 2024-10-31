@@ -58,7 +58,10 @@ class UserService {
             }
         }
 
-        const userUpdate = await userRepository.updateUserProfile(userId, setClause, values, keys)
+        values.push(userId)
+        console.log(values)
+
+        const userUpdate = await userRepository.updateUserProfile(setClause, values, keys)
 
         return userUpdate
 
