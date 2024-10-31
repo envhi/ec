@@ -1,5 +1,6 @@
-const { NotFoundError } = require("../helpers/ApiError")
+const { NotFoundError, UnauthorizedError } = require("../helpers/ApiError")
 const productRepository = require("../repositories/productRepository")
+const userRepository = require("../repositories/userRepository")
 
 class ProductService {
 
@@ -12,7 +13,7 @@ class ProductService {
     }
 
     async findProductById(idProduto) {
-        const produto = await productRepository.findProductById(Array(idProduto))
+        const produto = await productRepository.findProductById(idProduto)
 
         if (!produto) {
             throw new NotFoundError('Produto não cadastrado')
@@ -54,6 +55,43 @@ class ProductService {
         }
 
         return userProducts
+    }
+
+    async updateProduct(userId, productId, data) {
+
+        // console.log(productId)
+
+        const product = await productRepository.findProductById(productId)
+
+        if(!product){
+            throw new NotFoundError('Produto não existe')
+        }
+
+        if(product.id_usuario != userId) {
+            throw new UnauthorizedError('Unauthorized')
+        }
+
+        const setClause = []
+        const values = []
+        const keys = []
+
+        for(const key in data) {
+            if(data.hasOwnProperty(key)) {
+                if(key == 'nome' || key == 'categoria_produto' || key == 'descricao' || key == 'quantidade_estoque' || key == 'foto_url' || key == 'peso' || key == 'marca' || key == 'valor'){
+                    setClause.push(`${key} = $${setClause.length + 1}`)
+                    values.push(data[key])
+                    keys.push(key)
+                    
+                }
+            }
+        }
+                
+        values.push(productId)
+
+        const userUpdate = await productRepository.updateProduct(setClause, values, keys)
+
+        return userUpdate
+
     }
 }
 

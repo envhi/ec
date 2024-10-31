@@ -21,11 +21,17 @@ class ProductController {
 
         res.json(data)
     }
-    
+
     async findUserProducts(req, res) {
         const userProducts = await productService.findUserProducts(req.userId)
 
         return res.status(200).json(userProducts)
+    }
+
+    async updateProduct(req, res) {
+        const updateProduct = await productService.updateProduct(req.userId, req.params.id, req.body)
+
+        return res.status(200).json({ msg: 'Produto atualizado', updateProduct })
     }
 }
 

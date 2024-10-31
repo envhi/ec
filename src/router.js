@@ -11,6 +11,9 @@ const router = express.Router()
 // get products cadastrados pelo usuario[vendedor]
 router.get('/users/products', auth, productController.findUserProducts)
 
+// update products
+router.patch('/users/products/:id', auth, productController.updateProduct)
+
 // test user update
 router.patch('/users/profile', auth, userController.updateUserProfile)
 
